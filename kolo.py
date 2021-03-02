@@ -18,7 +18,9 @@ class Ui_KoloWindow(object):
         self.obwod.setText(str(round(math.pi * r1 * 2, 4)))
 
     def b2Clicked(self):
-        print("cos")
+        r1 = float(self.r.text())
+        self.pole2.setText(str(round(math.pi * (r1**2) * float(self.kat.text()) / 360, 4)))
+        self.luk.setText(str(round(math.pi * r1 * 2 * float(self.kat.text()) / 360, 4)))
 
     def setupUi(self, KoloWindow):
         KoloWindow.setObjectName("KoloWindow")

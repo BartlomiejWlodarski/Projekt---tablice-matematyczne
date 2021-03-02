@@ -31,7 +31,7 @@ class Ui_Dzial1Window(object):
             self.wynik_z.setText(str(c3.get_wynik()))
 
     def bKoniecClicked(self):
-        self.label.setText("przycisk został naciśnięty")
+        print("")
 
     def setupUi(self, Dzial1Window):
         Dzial1Window.setObjectName("Dzial1Window")

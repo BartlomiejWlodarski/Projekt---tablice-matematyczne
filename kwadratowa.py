@@ -25,7 +25,8 @@ class kwadratowa:
         return -((self.b * self.b) - (4 * self.a * self.c)) / (4 * self.a)
 
     def rysuj_wykres(self):
-        x = np.linspace(-10,10,1000)
+        p = -self.b/(2 * self.a)
+        x = np.linspace(p-10,p+10,1000)
         y = ((x**2) * self.a) + (x * self.b) + self.c 
         fig = plt.figure()
         ax = fig.add_subplot(1, 1, 1)

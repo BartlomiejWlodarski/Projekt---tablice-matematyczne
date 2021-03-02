@@ -15,6 +15,8 @@ from Dzial3 import Ui_Dzial3Window
 from Dzial4 import Ui_Dzial4Window
 from Dzial5 import Ui_Dzial5Window
 from Dzial6 import Ui_Dzial6Window
+from Dzial7 import Ui_MainWindow
+from Dzial8 import Ui_Dzial8Window
 
 class Ui_ProjektWindow(object):
     def openWindow1(self):
@@ -50,6 +52,18 @@ class Ui_ProjektWindow(object):
     def openWindow6(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Dzial6Window()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def openWindow7(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+    
+    def openWindow8(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dzial8Window()
         self.ui.setupUi(self.window)
         self.window.show()
 
@@ -109,12 +123,14 @@ class Ui_ProjektWindow(object):
         font.setPointSize(12)
         self.b7.setFont(font)
         self.b7.setObjectName("b7")
+        self.b7.clicked.connect(self.openWindow7)
         self.b8 = QtWidgets.QPushButton(self.centralwidget)
         self.b8.setGeometry(QtCore.QRect(500, 430, 171, 71))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.b8.setFont(font)
         self.b8.setObjectName("b8")
+        self.b8.clicked.connect(self.openWindow8)
         self.bKoniec = QtWidgets.QPushButton(self.centralwidget)
         self.bKoniec.setGeometry(QtCore.QRect(310, 530, 171, 71))
         font = QtGui.QFont()
@@ -149,8 +165,8 @@ class Ui_ProjektWindow(object):
         self.b4.setText(_translate("ProjektWindow", "Trygonometria"))
         self.b5.setText(_translate("ProjektWindow", "Logarytmy"))
         self.b6.setText(_translate("ProjektWindow", "Planimetria"))
-        self.b7.setText(_translate("ProjektWindow", "Dział 7"))
-        self.b8.setText(_translate("ProjektWindow", "Dział 8"))
+        self.b7.setText(_translate("ProjektWindow", "Kombinatoryka"))
+        self.b8.setText(_translate("ProjektWindow", "Statystyka"))
         self.bKoniec.setText(_translate("ProjektWindow", "Zakończ program"))
         self.label.setText(_translate("ProjektWindow", "Wybierz dział"))
 
