@@ -13,19 +13,40 @@ import math
 
 class Ui_TrojkatWindow(object):
     def b1Clicked(self):
-        p = 0.5 * (float(self.a.text()) + float(self.b.text()) + float(self.c.text()))
-        pole = round(math.sqrt(p * (p-float(self.a.text())) * (p - float(self.b.text())) * (p - float(self.c.text()))), 4)
-        self.pole1.setText(str(pole))
-        self.r.setText(str(round(pole/p, 4)))
-        self.R.setText(str(round( (float(self.a.text()) * float(self.b.text()) * float(self.c.text())) / (4 * pole), 4)))
+        tablica = []
+        tablica.append(float(self.a.text()))
+        tablica.append(float(self.b.text()))
+        tablica.append(float(self.c.text()))
+        tablica.sort()
+        if (tablica[0] + tablica[1])<tablica[2]:
+            self.pole1.setGeometry(QtCore.QRect(540, 70, 154, 91))
+            font = QtGui.QFont()
+            font.setPointSize(14)
+            self.pole1.setFont(font)
+            self.pole1.setText("Podane boki nie spełniają warunku budowy trójkąta")
+        else:
+            self.pole1.setGeometry(QtCore.QRect(540, 70, 104, 71))
+            font = QtGui.QFont()
+            font.setPointSize(16)
+            self.pole1.setFont(font)
+            p = 0.5 * (float(self.a.text()) + float(self.b.text()) + float(self.c.text()))
+            pole = round(math.sqrt(p * (p-float(self.a.text())) * (p - float(self.b.text())) * (p - float(self.c.text()))), 4)
+            self.pole1.setText(str(pole))
+            self.r.setText(str(round(pole/p, 4)))
+            self.R.setText(str(round( (float(self.a.text()) * float(self.b.text()) * float(self.c.text())) / (4 * pole), 4)))
 
     def b2Clicked(self):
         self.pole2.setText(str(0.5 * float(self.bok1.text()) * float(self.h.text())))
 
     def b3Clicked(self):
-        a = math.radians(float(self.kat.text()))
-        sinus = round(math.sin(a), 4)
-        self.pole3.setText(str(0.5 * float(self.boka.text()) * float(self.bokb.text()) * sinus))
+        if float(self.kat.text())>=180:
+            self.pole3.setText("Podano zbyt duży kąt >= 180")
+        elif float(self.kat.text())<=0:
+            self.pole3.setText("Podano zbyt mały kąt <= 0")
+        else:
+            a = math.radians(float(self.kat.text()))
+            sinus = round(math.sin(a), 4)
+            self.pole3.setText(str(0.5 * float(self.boka.text()) * float(self.bokb.text()) * sinus))
 
     def setupUi(self, TrojkatWindow):
         TrojkatWindow.setObjectName("TrojkatWindow")
@@ -41,11 +62,18 @@ class Ui_TrojkatWindow(object):
         self.c = QtWidgets.QLineEdit(self.centralwidget)
         self.c.setGeometry(QtCore.QRect(270, 70, 104, 71))
         self.c.setObjectName("c")
-        self.pole1 = QtWidgets.QLineEdit(self.centralwidget)
+        self.pole1 = QtWidgets.QLabel(self.centralwidget)
         self.pole1.setGeometry(QtCore.QRect(540, 70, 104, 71))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.pole1.setFont(font)
+        self.pole1.setWordWrap(True)
         self.pole1.setObjectName("pole1")
-        self.r = QtWidgets.QLineEdit(self.centralwidget)
+        self.r = QtWidgets.QLabel(self.centralwidget)
         self.r.setGeometry(QtCore.QRect(720, 70, 104, 71))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.r.setFont(font)
         self.r.setObjectName("r")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(90, 10, 241, 41))
@@ -65,8 +93,11 @@ class Ui_TrojkatWindow(object):
         font.setPointSize(12)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.R = QtWidgets.QLineEdit(self.centralwidget)
+        self.R = QtWidgets.QLabel(self.centralwidget)
         self.R.setGeometry(QtCore.QRect(950, 70, 104, 71))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.R.setFont(font)
         self.R.setObjectName("R")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(900, 30, 211, 31))
@@ -103,7 +134,7 @@ class Ui_TrojkatWindow(object):
         self.pole2 = QtWidgets.QLabel(self.centralwidget)
         self.pole2.setGeometry(QtCore.QRect(730, 220, 121, 61))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(16)
         self.pole2.setFont(font)
         self.pole2.setObjectName("pole2")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
@@ -144,9 +175,9 @@ class Ui_TrojkatWindow(object):
         self.boka.setGeometry(QtCore.QRect(30, 380, 104, 71))
         self.boka.setObjectName("boka")
         self.pole3 = QtWidgets.QLabel(self.centralwidget)
-        self.pole3.setGeometry(QtCore.QRect(730, 380, 121, 61))
+        self.pole3.setGeometry(QtCore.QRect(730, 380, 321, 61))
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(16)
         self.pole3.setFont(font)
         self.pole3.setObjectName("pole3")
         self.label_13 = QtWidgets.QLabel(self.centralwidget)

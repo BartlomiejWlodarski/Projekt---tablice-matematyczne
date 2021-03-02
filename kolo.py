@@ -19,12 +19,19 @@ class Ui_KoloWindow(object):
 
     def b2Clicked(self):
         r1 = float(self.r.text())
-        self.pole2.setText(str(round(math.pi * (r1**2) * float(self.kat.text()) / 360, 4)))
-        self.luk.setText(str(round(math.pi * r1 * 2 * float(self.kat.text()) / 360, 4)))
+        if float(self.kat.text())>360:
+            self.pole2.setText("Podano zbyt duży kąt > 360")
+            self.luk.setText("Podano zbyt duży kąt > 360")
+        elif float(self.kat.text())<=0:
+            self.pole2.setText("Podano zbyt mały kąt <= 0")
+            self.luk.setText("Podano zbyt mały kąt <= 0")
+        else:
+            self.pole2.setText(str(round(math.pi * (r1**2) * float(self.kat.text()) / 360, 4)))
+            self.luk.setText(str(round(math.pi * r1 * 2 * float(self.kat.text()) / 360, 4)))
 
     def setupUi(self, KoloWindow):
         KoloWindow.setObjectName("KoloWindow")
-        KoloWindow.resize(800, 600)
+        KoloWindow.resize(1000, 600)
         self.centralwidget = QtWidgets.QWidget(KoloWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.r = QtWidgets.QLineEdit(self.centralwidget)
@@ -90,7 +97,7 @@ class Ui_KoloWindow(object):
         self.obwod.setFont(font)
         self.obwod.setObjectName("obwod")
         self.pole2 = QtWidgets.QLabel(self.centralwidget)
-        self.pole2.setGeometry(QtCore.QRect(590, 320, 151, 31))
+        self.pole2.setGeometry(QtCore.QRect(590, 320, 351, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pole2.setFont(font)
@@ -102,7 +109,7 @@ class Ui_KoloWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.luk = QtWidgets.QLabel(self.centralwidget)
-        self.luk.setGeometry(QtCore.QRect(590, 430, 151, 31))
+        self.luk.setGeometry(QtCore.QRect(590, 430, 351, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.luk.setFont(font)

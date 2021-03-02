@@ -20,11 +20,14 @@ class Ui_TrojkatProstokatnyWindow(object):
         self.R.setText(str(0.5 * c_wartosc))
 
     def b2Clicked(self):
-        b_wartosc = round(math.sqrt((float(self.c.text())**2) - (float(self.a2.text())**2)), 4)
-        self.b_wynik.setText(str(b_wartosc))
-        self.pole.setText(str(0.5 * float(self.a2.text()) * b_wartosc))
-        self.r.setText(str(0.5 * (float(self.a2.text()) + b_wartosc - float(self.c.text()))))
-        self.R.setText(str(0.5 * float(self.c.text())))
+        if float(self.c.text())<=float(self.a2.text()):
+            self.b_wynik.setText("Przeciwprostokątna < przyprostokątnej, spróbuj ponownie")
+        else:
+            b_wartosc = round(math.sqrt((float(self.c.text())**2) - (float(self.a2.text())**2)), 4)
+            self.b_wynik.setText(str(b_wartosc))
+            self.pole.setText(str(0.5 * float(self.a2.text()) * b_wartosc))
+            self.r.setText(str(0.5 * (float(self.a2.text()) + b_wartosc - float(self.c.text()))))
+            self.R.setText(str(0.5 * float(self.c.text())))
 
     def setupUi(self, TrojkatProstokatnyWindow):
         TrojkatProstokatnyWindow.setObjectName("TrojkatProstokatnyWindow")
@@ -117,19 +120,20 @@ class Ui_TrojkatProstokatnyWindow(object):
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
         self.c_wynik = QtWidgets.QLabel(self.centralwidget)
-        self.c_wynik.setGeometry(QtCore.QRect(120, 290, 161, 41))
+        self.c_wynik.setGeometry(QtCore.QRect(120, 290, 161, 81))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.c_wynik.setFont(font)
         self.c_wynik.setObjectName("c_wynik")
         self.b_wynik = QtWidgets.QLabel(self.centralwidget)
-        self.b_wynik.setGeometry(QtCore.QRect(530, 290, 161, 41))
+        self.b_wynik.setGeometry(QtCore.QRect(530, 290, 261, 81))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.b_wynik.setFont(font)
+        self.b_wynik.setWordWrap(True)
         self.b_wynik.setObjectName("b_wynik")
         self.pole = QtWidgets.QLabel(self.centralwidget)
-        self.pole.setGeometry(QtCore.QRect(50, 460, 161, 41))
+        self.pole.setGeometry(QtCore.QRect(50, 460, 161, 91))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.pole.setFont(font)

@@ -1,0 +1,6 @@
+Logarytmy, planimetria - Bartek
+Geometria analityczna, funkcja kwadratowa - Janek
+Trygonometria i statystyka - Julka
+Ciągi i kombinatoryka - Stasiek
+poprawki i projekt.py - Janek i Bartek
+rysowanie wykresów - Bartek
